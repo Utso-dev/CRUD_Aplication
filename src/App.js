@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import User from "./pages/User";
+import Contact from "./pages/Contact";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import RootLayout from "./Rootlayout/RootLayout";
+
+
+
+
+
 
 function App() {
+  const route = createBrowserRouter(createRoutesFromElements( <Route path="/" element={<RootLayout></RootLayout>}>
+     <Route index element={<Home />}></Route>
+     <Route path="/about" element={<About />}></Route>
+     <Route path="/user" element={<User />}></Route>
+     <Route path="/contact" element={<Contact />}></Route>
+    
+  </Route>))
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <RouterProvider router={route}></RouterProvider>
+{/* ===========props ar kaj ==================  */}
+   {/* <Contact titel ="Utso Sarkar "/>
+   <Contact titel ="Chinmoy Sarkar "/>
+   <Contact titel ="Tonmoy Sarkar "/> */}
+   {/* ==================props part end */}
+   
+
+   </>
   );
 }
 
